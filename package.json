@@ -1,0 +1,25 @@
+{
+  "name": "japanese-kanjis-module",
+  "version": "0.0.1",
+  "type": "module",
+  "devDependencies": {
+    "typescript": "^5.8.3",
+    "wireit": "^0.14.11"
+  },
+  "scripts": {
+    "build": "wireit"
+  },
+  "wireit": {
+    "build": {
+      "command": "tsc --pretty",
+      "clean": "if-file-deleted",
+      "files": [
+        "tsconfig.json",
+        "src"
+      ],
+      "output": [
+        "lib"
+      ]
+    }
+  }
+}

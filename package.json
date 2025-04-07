@@ -1,25 +1,41 @@
 {
-  "name": "japanese-kanjis-module",
-  "version": "0.0.1",
-  "type": "module",
-  "devDependencies": {
-    "typescript": "^5.8.3",
-    "wireit": "^0.14.11"
-  },
-  "scripts": {
-    "build": "wireit"
-  },
-  "wireit": {
-    "build": {
-      "command": "tsc --pretty",
-      "clean": "if-file-deleted",
-      "files": [
-        "tsconfig.json",
-        "src"
-      ],
-      "output": [
-        "lib"
-      ]
-    }
-  }
+	"name": "japanese-kanjis-module",
+	"version": "0.0.1",
+	"type": "module",
+	"devDependencies": {
+		"typescript": "^5.8.3",
+		"wireit": "^0.14.11"
+	},
+	"scripts": {
+		"build": "wireit",
+		"download-kanjidic2": "wireit"
+	},
+	"wireit": {
+		"build": {
+			"dependencies": [
+				"download-kanjidic2",
+				"build:ts"
+			]
+		},
+		"build:ts": {
+			"command": "tsc --pretty",
+			"clean": "if-file-deleted",
+			"files": [
+				"./tsconfig.json",
+				"./src"
+			],
+			"output": [
+				"./lib"
+			]
+		},
+		"download-kanjidic2": {
+			"command": "wget https://www.edrdg.org/kanjidic/kanjidic2.xml.gz && gunzip kanjidic2.xml.gz",
+			"output": [
+				"./kanjidic2.xml.gz",
+				"./kanjidic2.xml"
+			],
+			"files": []
+		}
+	}
 }
+

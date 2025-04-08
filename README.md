@@ -75,7 +75,7 @@ import kanjis from './path/to/your/file.json' with {type: 'json'};
 **Note: If you are using TypeScript, you need to set `"resolveJsonModule"` to `true` in your configuration file.**
 
 <details>
-	<summary>Help! Typings not working :(</summary>
+	<summary><b>Help! Typings not working :(</b></summary>
 
 Your IDE should be able to read the content of your JSON file and automatically provides the typings for you.
 

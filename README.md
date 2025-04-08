@@ -61,7 +61,7 @@ interface Kanji {
 }
 ```
 
-_Note #1: Property names are abbreviated to reduce the final footprint of the data as much as possible._
+_Note #1: Property names are abbreviated to reduce the final footprint of the data as much as possible._  
 _Note #2: undefined values are removed from the data also to keep things minimal._
 
 ### From here

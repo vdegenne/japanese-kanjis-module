@@ -3,14 +3,26 @@
 	"version": "0.0.1",
 	"type": "module",
 	"devDependencies": {
+		"@types/xml2js": "^0.4.14",
+		"kanjidic2-json": "file:../kanjidic2-json",
 		"typescript": "^5.8.3",
 		"wireit": "^0.14.11"
 	},
 	"scripts": {
+		"dev": "wireit",
 		"build": "wireit",
 		"download-kanjidic2": "wireit"
 	},
 	"wireit": {
+		"dev": {
+			"command": "node ./test.js",
+			"dependencies": [
+				"build"
+			],
+			"files": [
+				"./test.js"
+			]
+		},
 		"build": {
 			"dependencies": [
 				"download-kanjidic2",
@@ -26,6 +38,9 @@
 			],
 			"output": [
 				"./lib"
+			],
+			"dependencies": [
+				"download-kanjidic2"
 			]
 		},
 		"download-kanjidic2": {
@@ -36,6 +51,14 @@
 			],
 			"files": []
 		}
+	},
+	"files": [
+		"./lib"
+	],
+	"exports": {
+		".": {
+			"default": "./lib/builder.js",
+			"types": "./lib/builder.d.ts"
+		}
 	}
 }
-

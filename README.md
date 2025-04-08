@@ -85,6 +85,8 @@ If it does not type correctly, you can add `japanese-kanjis-module/kanjis` to `"
 import kanjis from './path/to/your/file.json?kanjis' with {type: 'json'};
 ```
 
+The only downside is that you'll have access to all properties so you'll have to remind which property you kept.
+
 </details>
 
 ## More examples

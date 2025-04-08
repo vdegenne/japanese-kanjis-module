@@ -17,33 +17,48 @@ import {buildData} from 'japanese-kanjis-module';
 
 buildData({
 	output: './src/kanjis.json',
-	jlpt: [5, 3, 0], // jlpt5, jlpt3 and non-jlpt characters only
 	english: true, // Includes English meanings
 	filter({freq, strokeCounts}) {
-		// Only characters with a stroke count lower than 10
-		// and a frequency usage higher than 1000
-		return strokeCounts < 10 && freq > 1000;
+		// Only characters with a grade lower than 3
+		// and an usage frequency higher than 1000
+		return grade < 3 && freq > 1000;
 	},
 });
 ```
 
 ---
 
-Resulting data will be of the form:
+Resulting data will be of the form `Kanji[]`
 
-```js
-[Kanji[], null, null, Kanji[], null, Kanji[]]
-// [jlpt0, jlpt1, jlpt2, jlpt3, jlpt4, jlpt5]
-```
-
-With that in mind, you can quickly access a group of kanjis in the same level (e.g. `kanjis[5]` for jlpt5).
-
-### Kanji object
-
-A kanji object will be of the form (depending on the information you decided to keep):
+The `Kanji` object is a simplified data structure representing one kanji and its associated information (of course the information will vary depending on what you decided to keep),
 
 ```ts
-interface Character {}
+export interface Kanji {
+	/** Character */
+	c: string;
+
+	jlpt?: 5 | 4 | 3 | 2 | 1;
+
+	/** Grade */
+	gr?: 1 | 2 | 3 | 4 | 5 | 6 | 8 | 9 | 10;
+
+	/** Stroke count */
+	strc?: [number] | [number, number] | [number, number, number];
+
+	/** Frequency */
+	frq?: number;
+
+	/** English meaning */
+	en?: string[];
+
+	/** On'yomi */
+	on?: string[];
+	/** Kun'yomi */
+	kun?: string[];
+
+	krr?: string[];
+	krh?: string[];
+}
 ```
 
 _Note that the property names are abbreviated to reduce the final footprint of the data as much as possible._
@@ -54,7 +69,8 @@ _Note that the property names are abbreviated to reduce the final footprint of t
 const __dirname = import.meta.dirname;
 
 await buildData({
-	output: `${__dirname}/../src/kanjis.json`, // Save relative to the building script
+	// Save relative to the building script
+	output: `${__dirname}/../src/kanjis.json`,
 
 	filter({strokeCounts, jlpt}) {
 		// Only keeps 5 and 10 strokes characters.

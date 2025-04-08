@@ -1,4 +1,4 @@
-export interface Kanji {
+declare interface Kanji {
 	/** Character */
 	c: string;
 
@@ -21,6 +21,13 @@ export interface Kanji {
 	/** Kun'yomi */
 	kun?: string[];
 
+	/** Korean Romanization */
 	krr?: string[];
+	/** Korean Hangul */
 	krh?: string[];
+}
+
+declare module '*.json?kanjis' {
+	const value: Kanji[];
+	export default value;
 }

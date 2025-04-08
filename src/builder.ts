@@ -1,6 +1,5 @@
 import data from 'kanjidic2-json';
 import fs from 'fs/promises';
-import {Kanji} from './types.js';
 import {KanjiDic2Character} from '../../kanjidic2-json/lib/types.js';
 
 interface CharacterValues {

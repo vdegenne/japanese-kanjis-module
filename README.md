@@ -26,14 +26,12 @@ buildData({
 });
 ```
 
----
-
 Resulting data will be of the form `Kanji[]`
 
 The `Kanji` object is a simplified data structure representing one kanji and its associated information (of course the information will vary depending on what you decided to keep),
 
 ```ts
-export interface Kanji {
+interface Kanji {
 	/** Character */
 	c: string;
 
@@ -56,12 +54,38 @@ export interface Kanji {
 	/** Kun'yomi */
 	kun?: string[];
 
+	/** Korean Romanization */
 	krr?: string[];
+	/** Korean Hangul */
 	krh?: string[];
 }
 ```
 
-_Note that the property names are abbreviated to reduce the final footprint of the data as much as possible._
+_Note #1: Property names are abbreviated to reduce the final footprint of the data as much as possible._
+_Note #2: undefined values are removed from the data also to keep things minimal._
+
+### From here
+
+Once your data is generated on your system, all you need is to import it,
+
+```js
+import kanjis from './path/to/your/file.json' with {type: 'json'};
+```
+
+**Note: If you are using TypeScript, you need to set `"resolveJsonModule"` to `true` in your configuration file.**
+
+<details>
+	<summary>Help! Typings not working :(</summary>
+
+Your IDE should be able to read the content of your JSON file and automatically provides the typings for you.
+
+If it does not type correctly, you can add `japanese-kanjis-module/kanjis` to `"types"` in your `tsconfig.json` (or `jsconfig.json` if you are using vanilla), and change your import to,
+
+```js
+import kanjis from './path/to/your/file.json?kanjis' with {type: 'json'};
+```
+
+</details>
 
 ## More examples
 

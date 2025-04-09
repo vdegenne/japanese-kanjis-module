@@ -60,6 +60,9 @@
 		".": {
 			"default": "./lib/builder.js",
 			"types": "./lib/builder.d.ts"
+		},
+		"./kanjis": {
+			"types": "./kanjis.d.ts"
 		}
 	}
 }

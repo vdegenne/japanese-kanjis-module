@@ -54,7 +54,8 @@
 		}
 	},
 	"files": [
-		"./lib"
+		"./lib",
+		"./kanjis.d.ts"
 	],
 	"exports": {
 		".": {

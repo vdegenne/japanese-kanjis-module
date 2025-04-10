@@ -1,11 +1,11 @@
 {
 	"name": "japanese-kanjis-module",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"type": "module",
 	"devDependencies": {
 		"@types/node": "^22.14.0",
 		"@types/xml2js": "^0.4.14",
-		"kanjidic2-json": "file:../kanjidic2-json",
+		"kanjidic2-json": "^0.0.1",
 		"typescript": "^5.8.3",
 		"wireit": "^0.14.11"
 	},

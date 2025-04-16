@@ -7,7 +7,10 @@ declare interface Kanji {
 	/** Grade */
 	gr?: 1 | 2 | 3 | 4 | 5 | 6 | 8 | 9 | 10;
 
-	/** Stroke count */
+	/**
+	 * Stroke count
+	 * From 1 to 34.
+	 */
 	strc?: [number] | [number, number] | [number, number, number];
 
 	/** Frequency */
